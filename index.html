@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bigg Boss Voting Poll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vote for your favorite Bigg Boss contestant</h1>
+    <div>
+        <button onclick="vote('Contestant 1')">Contestant 1</button>
+        <button onclick="vote('Contestant 2')">Contestant 2</button>
+        <button onclick="vote('Contestant 3')">Contestant 3</button>
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        function vote(contestant) {
+            // Send the vote back to Telegram
+            Telegram.WebApp.sendData(contestant);
+
+            // Show confirmation in the web app
+            document.getElementById('result').innerHTML = 'Thanks for voting for ' + contestant + '!';
+        }
+
+        // Initialize Telegram Web App
+        Telegram.WebApp.ready();
+    </script>
+</body>
+</html>
